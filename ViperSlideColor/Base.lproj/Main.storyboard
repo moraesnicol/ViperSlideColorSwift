@@ -1,24 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="ViperSlideColor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="N8X-Kl-eqU">
+                                <rect key="frame" x="12" y="230" width="390" height="170"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="swx-jP-QjW">
+                                        <rect key="frame" x="-2" y="0.0" width="394" height="31"/>
+                                        <connections>
+                                            <action selector="oneRedValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="Li0-yn-aJ6"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="wjR-P3-CRQ">
+                                        <rect key="frame" x="-2" y="70" width="394" height="31"/>
+                                        <connections>
+                                            <action selector="onGreenValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="P0F-1h-yXW"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="Qai-Ld-MGR">
+                                        <rect key="frame" x="-2" y="140" width="394" height="31"/>
+                                        <connections>
+                                            <action selector="onBlueValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="dwU-Mz-G3t"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="390" id="db8-1Y-4LS"/>
+                                    <constraint firstAttribute="height" constant="170" id="lC0-30-izO"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RGB (0.0, 0.0,  0.0)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S08-JN-aTk">
+                                <rect key="frame" x="42" y="723" width="330" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="Bk7-OW-1Yy"/>
+                                    <constraint firstAttribute="width" constant="330" id="hB2-cm-ujI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="N8X-Kl-eqU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HoO-OT-jhh"/>
+                            <constraint firstItem="S08-JN-aTk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="JyI-9l-8Fm"/>
+                            <constraint firstItem="N8X-Kl-eqU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="186" id="Mss-63-6pk"/>
+                            <constraint firstItem="S08-JN-aTk" firstAttribute="top" secondItem="Qai-Ld-MGR" secondAttribute="bottom" constant="323" id="cyO-Au-zXo"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblRgbValue" destination="S08-JN-aTk" id="h5K-iX-BlB"/>
+                        <outlet property="sliderBlue" destination="Qai-Ld-MGR" id="0UD-gY-iMC"/>
+                        <outlet property="sliderGreen" destination="wjR-P3-CRQ" id="325-Vd-VqI"/>
+                        <outlet property="sliderRed" destination="swx-jP-QjW" id="OTE-ex-Aab"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-388.40579710144931" y="136.60714285714286"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
